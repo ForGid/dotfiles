@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ -z "$1" ]; then
+  echo "Usage: setwall /path/to/image.jpg"
+  exit 1
+fi
+
+WALL_PATH="$(realpath "$1")"
+
+hyprctl hyprpaper reload ,"$WALL_PATH" >/dev/null 2>&1
+
+wal -i "$WALL_PATH" >/dev/null 2>&1
+
+killall waybar >/dev/null 2>&1
+nohup waybar >/dev/null 2>&1 &
+
