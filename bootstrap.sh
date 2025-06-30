@@ -1,23 +1,26 @@
 #!/bin/sh
 
-
 echo "[dotfiles] Installing packages..."
 sudo pacman -S --needed --noconfirm $(grep -vE '^\s*#' ~/dotfiles/packages.txt)
 
 echo "[dotfiles] Bootstrapping configs..."
 
-# Create config directories if missing
+# Ensure ~/.config exists
 mkdir -p ~/.config
 
 echo "[dotfiles] Linking configs..."
-ln -srf .config/nvim ~/.config/
-ln -srf .config/hypr ~/.config/
-ln -srf .zshrc ~/
-ln -srf .zprofile ~/
-ln -srf screen_saver.sh ~/
-chmod +x screen_saver.sh
+ln -srf ~/dotfiles/.config/nvim ~/.config/
+ln -srf ~/dotfiles/.config/hypr ~/.config/
+ln -srf ~/dotfiles/.config/kitty ~/.config/
+ln -srf ~/dotfiles/.config/fastfetch ~/.config/
+ln -srf ~/dotfiles/.config/waybar ~/.config/
+ln -srf ~/dotfiles/.zshrc ~/
+ln -srf ~/dotfiles/.zprofile ~/
+ln -srf ~/dotfiles/screen_saver.sh ~/
+chmod +x ~/screen_saver.sh
+
 mkdir -p ~/.local/bin
-ln -srf setwall ~/.local/bin
-chmod +x setwall
+ln -srf ~/dotfiles/setwall ~/.local/bin/
+chmod +x ~/.local/bin/setwall
 
 echo "[dotfiles] Done."
