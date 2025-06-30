@@ -1,5 +1,6 @@
 # Base System
 base
+gcc
 base-devel
 linux
 linux-headers
@@ -15,8 +16,6 @@ exfatprogs
 man-db
 man-pages
 pkgconf
-yay
-yay-debug
 
 # Dev tools & langs
 git
@@ -31,7 +30,6 @@ python-dotenv
 python-requests
 python-osmium
 python-pandas
-aws-cli-v2
 
 # GUI
 hyprland
@@ -49,7 +47,6 @@ swayidle
 # UI & apps
 kitty
 neovim
-vim
 fastfetch
 gimp
 
@@ -66,15 +63,13 @@ unrar
 ripgrep
 pavucontrol
 mpv
-spotify-tui
 zsh
-pipes.sh
 pass
+wl-clipboard
 
 # Printing 
 cups
 gutenprint
-epson-inkjet-printer-escpr
 system-config-printer
 
 # Fonts

@@ -1,0 +1,47 @@
+@import '../../.cache/wal/colors-waybar.css';
+
+* {
+	font-family: Hack Nerd Font;
+	font-size: 18px;
+	border: none;
+	border-radius: 0px;
+	color: @foreground;
+}
+window#waybar {
+	background: transparent;
+	border: none;
+	box-shadow: none;
+}
+
+#workspaces {
+    background: @background;
+    margin: 2px 1px 3px 1px;
+    padding: 0px 1px;
+    border-radius: 15px;
+    border: 0px;
+    font-weight: bold;
+    font-style: normal;
+    opacity: 0.8;
+    font-size: 16px;
+    color: @foreground;
+}
+
+#workspaces button {
+    padding: 0px 5px;
+    margin: 4px 3px;
+    border-radius: 15px;
+    border: 0px;
+    color: @color8;
+    background-color: @background;
+    transition: all 0.3s ease-in-out;
+    opacity: 0.4;
+}
+
+#workspaces button.active {
+    color: @foreground;
+    background: @color8;
+    border-radius: 15px;
+    min-width: 40px;
+    transition: all 0.3s ease-in-out;
+    opacity:1.0;
+}
