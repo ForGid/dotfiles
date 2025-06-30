@@ -22,6 +22,11 @@ fi
 echo "[dotfiles] Installing AUR packages..."
 yay -S --needed --noconfirm $(grep -vE '^\s*#' ~/dotfiles/aur.txt)
 
+if [[ "$SHELL" != *zsh ]]; then
+  echo "[dotfiles] Changing default shell to zsh..."
+  chsh -s /bin/zsh
+fi
+
 echo "[dotfiles] Bootstrapping configs..."
 
 mkdir -p ~/.config
@@ -55,8 +60,8 @@ fi
 mkdir -p ~/.local/bin
 
 echo "[dotfiles] Linking custom scripts..."
-ln -srf ~/dotfiles/scripts/screen_saver.sh ~/.local/bin/
-chmod +x ~/.local/bin/screen_saver.sh
+ln -srf ~/dotfiles/scripts/screen_saver ~/.local/bin/
+chmod +x ~/.local/bin/screen_saver
 
 ln -srf ~/dotfiles/scripts/setwall ~/.local/bin/
 chmod +x ~/.local/bin/setwall

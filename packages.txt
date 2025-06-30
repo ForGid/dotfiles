@@ -30,6 +30,7 @@ python-dotenv
 python-requests
 python-osmium
 python-pandas
+python-pywal
 
 # GUI
 hyprland
