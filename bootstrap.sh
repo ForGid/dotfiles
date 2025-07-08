@@ -1,5 +1,9 @@
 #!/bin/sh
 
+# TO DO, WILL DELETE ON RUN
+#.config/aerc/accounts.conf
+#.config/aerc/contacts/**
+
 cd ~ || exit 1
 
 echo "[dotfiles] Updating system..."
@@ -32,7 +36,7 @@ echo "[dotfiles] Bootstrapping configs..."
 mkdir -p ~/.config
 
 echo "[dotfiles] Linking configs..."
-CONFIG_DIRS=(nvim hypr kitty fastfetch waybar)
+CONFIG_DIRS=(nvim hypr kitty fastfetch waybar khard aerc)
 
 for dir in "${CONFIG_DIRS[@]}"; do
   target="$HOME/.config/$dir"

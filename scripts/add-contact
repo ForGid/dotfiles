@@ -1,0 +1,36 @@
+#!/bin/bash
+
+CONTACT_DIR="$HOME/.config/aerc/contacts/work"
+mkdir -p "$CONTACT_DIR"
+
+command -v uuidgen >/dev/null 2>&1 || { echo "uuidgen required but not found."; exit 1; }
+
+# Skip junk/bots
+IGNORE_PATTERNS="(noreply|no-reply|mailer-daemon|bounce|listserv|postmaster|donotreply)"
+
+EMAIL="$AERC_FROM_ADDRESS"
+NAME="$AERC_FROM_NAME"
+
+if [[ -z "$EMAIL" || "$EMAIL" =~ $IGNORE_PATTERNS ]]; then
+  echo "Skipped: $EMAIL"
+  exit 0
+fi
+
+# Check for existing contact
+if grep -qi "$EMAIL" "$CONTACT_DIR"/*.vcf 2>/dev/null; then
+  echo "Already exists: $EMAIL"
+  exit 0
+fi
+
+UUID=$(uuidgen)
+FILENAME="$CONTACT_DIR/$(echo "$UUID" | tr -cd '[:alnum:]').vcf"
+
+cat > "$FILENAME" <<EOF
+BEGIN:VCARD
+VERSION:3.0
+UID:$UUID
+FN:$NAME
+EMAIL:$EMAIL
+END:VCARD
+EOF
+
